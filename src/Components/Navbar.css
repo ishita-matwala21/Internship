@@ -1,0 +1,28 @@
+
+.navbar {
+    background-color: #2f4d70;
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+  
+  }
+  
+
+  .navbar li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  
+  
+  .navbar a:hover {
+    color: #d78c8c;
+    text-shadow: 5px 5px 5px #c16060;
+  }
+  
