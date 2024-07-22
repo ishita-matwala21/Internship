@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 app.use("/auth", UserRouter);
 
-mongoose.connect(dbURI, 
+mongoose.connect(dbURI)
   .then(() => {
     console.log("Connected to MongoDB");
   })
