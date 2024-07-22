@@ -9,28 +9,23 @@ import { UserRouter } from "./routes/user.js";
 const app = express();
 dotenv.config();
 const dbURI = process.env.MONGODB_URI;
-const allowedOrigins = [
-  'http://localhost:3001',
-  'https://internsportal.netlify.app'
-];
 
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
+  origin: [
+    "http://localhost:3001",
+    "https://internsportal.netlify.app/"
+  ],
+  credentials: true,
 }));
 app.use(cookieParser());
 
 app.use("/auth", UserRouter);
 
 mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
   tlsInsecure: true 
 })
   .then(() => {
@@ -41,5 +36,5 @@ mongoose.connect(dbURI, {
   });
 
 app.listen(process.env.PORT, () => {
-  console.log("Server is running on port 3000");
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
